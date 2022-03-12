@@ -101,7 +101,7 @@ namespace GPS_PROJECT3
             return crc;
         }
 
-        // CRC CALCULATOR Багшийн өгсөн аргыг хэрэгжүүлэв. 12146 гэсэн хариу дээрх тохиолдолд гарс байсан.
+        // CRC CALCULATOR Багшийн өгсөн аргыг хэрэгжүүлэв. 12146 гэсэн хариу дээрх тохиолдолд гарч байсан.
         internal static ushort CRC16(byte[] rawData)
         {
             ushort crc = 0xffff;
