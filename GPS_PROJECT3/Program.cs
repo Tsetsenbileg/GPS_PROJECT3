@@ -14,7 +14,6 @@ namespace GPS_PROJECT3
             Packet p = new Packet(gg);
             Console.WriteLine(p.getIsRealValue());
         }
-
         public static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
