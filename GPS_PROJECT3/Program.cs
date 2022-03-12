@@ -12,8 +12,7 @@ namespace GPS_PROJECT3
             byte[] gg = StringToByteArray(dd);
 
             Packet p = new Packet(gg);
-            //p.byteToASCII();
-
+            Console.WriteLine(p.getIsRealValue());
         }
 
         public static byte[] StringToByteArray(string hex)
