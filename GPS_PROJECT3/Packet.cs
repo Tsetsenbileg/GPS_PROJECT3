@@ -42,69 +42,37 @@ namespace GPS_PROJECT3
                 if(Length <= 1024)
                 {
                     // Дээрх нөхцөлүүдийг хангасан тохиолдолд CRC-г тооцоолж packet -н мэдээлэл дунд байгаа тоотой тэнцүү байгаа эсэхийг шалгаж байна.
-                    if(crcCheckerValue == CRC16(rawPacket))
+                    if(crcCheckerValue == CRC16(rawPacket[0..(this.Length-4)]))
                     {
+                        // crcCheckerValue 59475
                         this.isReal = true;
                     }else
                     {
                         this.isReal = false;
-                        Console.WriteLine(UNIT_code);
-                        //Console.WriteLine(false);
-                        //Console.WriteLine(crcCheckerValue);
                     }
-
                 }else
                 {
-                    this.isReal = false; 
+                    this.isReal = false;
                 }
                 
             } else
             {
                 this.isReal = false;
-                //Console.WriteLine(false);
             }
         }
 
         // DECIMAL TO HEX
         private void byteToASCII(byte[] bytes)
         {
+            // packetName 2GQ-16010638 гарч байна.
             foreach (byte b in bytes)
             {
                 string c = Convert.ToChar(b).ToString();
                 this.packetName += c;
             }
-            Console.WriteLine(this.packetName);
+            
         }
-        // Үүнд тайлан дээр байсан кодыг хэрэгжүүлсэн. 16222 гэсэн хариу гарч байсан дээрх тохиолдолд.
-        private ushort crc16(byte[] bytes)
-        {
-            const ushort poly = 4129;
-            ushort[] table = new ushort[256];
-            ushort initialValue = 0xffff;
-            ushort temp, a;
-            ushort crc = initialValue;
-            for (int i = 0; i < table.Length; ++i)
-            {
-                temp = 0;
-                a = (ushort)(i << 8);
-                for (int j = 0; j < 8; ++j)
-                {
-                    if (((temp ^ a) & 0x8000) != 0)
-                        temp = (ushort)((temp << 1) ^ poly);
-                    else
-                        temp <<= 1;
-                    a <<= 1;
-                }
-                table[i] = temp;
-            }
-            for (int i = 0; i < bytes.Length; ++i)
-            {
-                crc = (ushort)((crc << 8) ^ table[((crc >> 8) ^ (0xff & bytes[i]))]);
-            }
-            return crc;
-        }
-
-        // CRC CALCULATOR Багшийн өгсөн аргыг хэрэгжүүлэв. 12146 гэсэн хариу дээрх тохиолдолд гарч байсан.
+        // CRC CALCULATOR 59475 гэсэн хариу дээрх тохиолдолд гарч байсан.
         internal static ushort CRC16(byte[] rawData)
         {
             ushort crc = 0xffff;
