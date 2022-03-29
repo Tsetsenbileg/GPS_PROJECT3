@@ -8,7 +8,6 @@ namespace GPS_PROJECT3
     {
         static void Main(string[] args)
         {
-
             String dd = "404056003247512d31363031303633380110060a130a2a080f3e40440a7089e616cf005004d03101010505050006000101000018a5a6a7a8a9aaf2adaeafb0b16162636465666768696a6b6c060a130a2a0753e80d0a";
             byte[] gg = GPS_LIBRARY.Packet.StringToByteArray(dd);
             Packet p = new Packet(gg);
