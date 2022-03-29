@@ -5,7 +5,7 @@ namespace GPS_LIBRARY
 {
     public class Packet
     {
-        //Tsetsenbileg
+       
         public byte[] Header = new byte[2];
         public ushort Length = 0;
         public byte[] UNIT_code = new byte[12];

@@ -7,4 +7,10 @@
     <StartupObject />
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="GPS_LIBRARY">
+      <HintPath>..\GPS_LIBRARY\GPS_LIBRARY.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
