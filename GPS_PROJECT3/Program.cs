@@ -13,6 +13,9 @@ namespace GPS_PROJECT3
 
             Packet p = new Packet(gg);
             Console.WriteLine(p.getIsRealValue());
+            Console.WriteLine(p.getEventCode());
+            Console.WriteLine(p.getPacketName());
+            //Console.WriteLine(p.byteToASCII(p.Event_Code));
         }
 
         public static byte[] StringToByteArray(string hex)
